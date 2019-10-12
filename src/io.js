@@ -11,12 +11,12 @@ const TEXT = {
 };
 
 function readTwitterCredentials() {
-  let consumerKey = argv.consumerkey;
-  let consumerSecret = argv.consumersecret;
+  let consumerKey = argv.consumerkey || process.env.TWITTER_API_CONSUMER_KEY;
+  let consumerSecret = argv.consumersecret || process.env.TWITTER_API_CONSUMER_SECRET;
   if (consumerKey && consumerSecret) {
     return {consumerKey, consumerSecret};
   }
-  console.log('\nTwitter credentials required to use API.');
+  console.log('\nTwitter credentials are required to use API.');
   consumerKey = consumerKey || rl.question('Consumer Key: ', {hideEchoBack: true});
   consumerSecret = consumerSecret || rl.question('Consumer Secret: ', {hideEchoBack: true});
   return {consumerKey, consumerSecret};

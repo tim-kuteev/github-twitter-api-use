@@ -32,10 +32,6 @@ class TwitterService {
         'Authorization': 'Basic ' + TwitterService.encodeCredentials(consumerKey, consumerSecret),
       },
     });
-    if (Array.isArray(res.errors)) {
-      const errMsg = res.errors.filter(e => e.message).map(e => e.message).join('; ');
-      throw new Error(errMsg || 'Unable to verify Twitter credentials');
-    }
     if (res.token_type !== 'bearer') {
       throw new Error('Unable to retrieve Twitter credentials');
     }
