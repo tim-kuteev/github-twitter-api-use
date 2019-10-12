@@ -39,7 +39,7 @@ function readGithubCredentials() {
 }
 
 function readUserQuery() {
-  return argv.query || rl.question(`Enter your query (${DEFAULT_QUERY}): `) || DEFAULT_QUERY;
+  return argv.query || rl.question(`\nEnter your query (${DEFAULT_QUERY}): `) || DEFAULT_QUERY;
 }
 
 function printRepository(rep) {
