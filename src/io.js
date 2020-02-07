@@ -42,14 +42,12 @@ function readUserQuery() {
   return argv.query || rl.question(`\nEnter your query (${DEFAULT_QUERY}): `) || DEFAULT_QUERY;
 }
 
-function printRepository(rep) {
+function printResult(rep, tweets) {
   console.log(`\n${TEXT.cyan} ${TEXT.underline}`, 'Repository:', rep.full_name);
   rep.description && console.log(rep.description);
   rep.homepage && console.log(rep.homepage);
   console.log('Language: %s, Stars: %s, Open Issues: %s\n', rep.language, rep.stargazers_count, rep.open_issues);
-}
 
-function printTweets(tweets) {
   if (tweets.length) {
     console.log(TEXT.bold, 'Tweets:');
     for (let tweet of tweets) {
@@ -66,6 +64,5 @@ module.exports = {
   readTwitterCredentials,
   readGithubCredentials,
   readUserQuery,
-  printRepository,
-  printTweets
+  printResult,
 };
